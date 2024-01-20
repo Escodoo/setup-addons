@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
+import base64
 from odoo import api, tools, SUPERUSER_ID
+from odoo.modules.module import get_module_resource
+
+
+def _default_image(env):
+    image_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'res_partner_escodoo-image.png')
+    return base64.b64encode(open(image_path, 'rb').read())
 
 
 def is_demo_data_installed(env):
@@ -70,6 +77,7 @@ def _update_partners(env):
                 'legal_name': partner_name,
                 'website': 'https://www.escodoo.com.br',
                 'email': 'teste@escodoo.com.br',
+                'image_1920': _default_image(env),
             })
             parent_index += 1
 
