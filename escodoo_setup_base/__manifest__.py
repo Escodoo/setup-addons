@@ -125,7 +125,7 @@
         # "stock_request",
         # "stock_request_purchase_request",
         # "supplier_quality_index",
-        "support_branding",
+        # "support_branding",
         "web_advanced_search",
         "web_escodoo_brand",
         "web_pwa_oca",
