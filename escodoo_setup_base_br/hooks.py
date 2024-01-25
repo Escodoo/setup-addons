@@ -96,14 +96,17 @@ def _update_companies(env):
     company_logo_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'your_company_logo.png')
     company_logo_image = base64.b64encode(open(company_logo_path, 'rb').read()) if company_logo_path else False
 
+    values = {
+        'country_id': env.ref('base.br').id,
+    }
+
+    if company_logo_image:
+        values.update({'logo': company_logo_image})
+
+    if escodoo_partner:
+        values.update({'technical_support_id': escodoo_partner.id})
+
     for company in all_company_records:
-        values = {}
-        if not company.country_id:
-            values.update({'country_id': env.ref('base.br').id})
-        if escodoo_partner and not company.technical_support_id:
-            values.update({'technical_support_id': escodoo_partner.id})
-        if company_logo_image and not company.logo:
-            values.update({'logo': company_logo_image})
         company.write(values)
 
     # falta o regime pis/cofins
@@ -199,11 +202,19 @@ def post_init_hook(cr, registry):
     _add_group_to_admin_user(env)
     _update_partners(env)
 
+    # Configurar o ambiente Odoo
+    config = tools.config
+
+    # Obter o nome da base de dados
+    db_name = config['db_name']
+
+    db_name_uppercase = db_name.upper()
+
     env["ir.config_parameter"].set_param("auth_signup.invitation_scope", "b2b")
     env["ir.config_parameter"].set_param("pwa.manifest.background_color", "#7C7BAD")
-    env["ir.config_parameter"].set_param("pwa.manifest.name", "Odoo Escodoo")
-    env["ir.config_parameter"].set_param("pwa.manifest.short_name", "Odoo Escodoo")
-    env["ir.config_parameter"].set_param("pwa.manifest.theme_color", "#7C7BAD")
+    env["ir.config_parameter"].set_param("pwa.manifest.name", f"Odoo Online {db_name_uppercase}")
+    env["ir.config_parameter"].set_param("pwa.manifest.short_name", f"Odoo {db_name_uppercase}")
+    env["ir.config_parameter"].set_param("pwa.manifest.theme_color", "#FFFFFF")
     # env["ir.config_parameter"].set_param("support_company", "Escodoo Sistemas")
     # env["ir.config_parameter"].set_param("support_company_url", "https://www.escodoo.com.br")
     # env["ir.config_parameter"].set_param("support_branding_color", "#fff")
