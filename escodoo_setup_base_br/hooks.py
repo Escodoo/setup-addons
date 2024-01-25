@@ -88,19 +88,27 @@ def _update_companies(env):
     Args:
         env: The Odoo environment for database access.
     """
-    escodoo_partner = env.ref(
-        'escodoo_setup_base_br.partner_escodoo', raise_if_not_found=False)
-    if escodoo_partner:
-        all_company_records = env['res.company'].search([])
-        all_company_records.write(
-            {
-                'technical_support_id': escodoo_partner.id,
-                'country_id': env.ref('base.br').id,
-                # falta o regime pis/cofins
-                # falta o regime do icms
-                # ativar RIPI
-            }
-        )
+
+    all_company_records = env['res.company'].search([])
+
+    escodoo_partner = env.ref('escodoo_setup_base_br.partner_escodoo', raise_if_not_found=False)
+
+    company_logo_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'your_company_logo.png')
+    company_logo_image = base64.b64encode(open(company_logo_path, 'rb').read()) if company_logo_path else False
+
+    for company in all_company_records:
+        values = {}
+        if not company.country_id:
+            values.update({'country_id': env.ref('base.br').id})
+        if escodoo_partner and not company.technical_support_id:
+            values.update({'technical_support_id': escodoo_partner.id})
+        if company_logo_image and not company.logo:
+            values.update({'logo': company_logo_image})
+        company.write(values)
+
+    # falta o regime pis/cofins
+    # falta o regime do icms
+    # ativar RIPI
 
 
 def _update_res_config_settings(env):
