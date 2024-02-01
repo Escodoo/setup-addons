@@ -24,7 +24,7 @@
         # "account_move_line_cash_basis_report",
         # "account_move_line_menu",
         "account_move_template",
-        "account_move_visible_date_maturity",
+        # "account_move_visible_date_maturity",
         "account_payment",
         # "account_payment_order",
         "account_payment_partner",
