@@ -29,7 +29,7 @@
         # "l10n_br_delivery",
         # "l10n_br_delivery_nfe",
         "l10n_br_fiscal",
-        "l10n_br_fiscal_certificate",
+        # "l10n_br_fiscal_certificate",
         # "l10n_br_fiscal_closing",
         # "l10n_br_fiscal_dfe",
         # "l10n_br_hr",
