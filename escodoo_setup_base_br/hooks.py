@@ -197,7 +197,7 @@ def post_init_hook(cr, registry):
     env = api.Environment(cr, SUPERUSER_ID, {})
     _load_partner_escodoo(cr, env)
     _update_companies(env)
-    _update_res_config_settings(env)
+    # _update_res_config_settings(env)
     _load_default_chart_of_accounts(env)
     _add_group_to_admin_user(env)
     _update_partners(env)
