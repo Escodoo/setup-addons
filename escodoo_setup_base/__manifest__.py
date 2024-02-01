@@ -82,7 +82,7 @@
         # "mail_tracking_mass_mailing",
         # "mass_mailing",
         # "mass_mailing_resend",
-        "marketing_crm_partner",
+        # "marketing_crm_partner",
         "mis_builder",
         "mis_builder_analytic",
         "mis_builder_budget",
