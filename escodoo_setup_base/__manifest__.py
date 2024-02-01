@@ -28,7 +28,7 @@
         "account_payment",
         # "account_payment_order",
         "account_payment_partner",
-        "account_payment_paired_internal_transfer",
+        # "account_payment_paired_internal_transfer",
         "account_reconciliation_widget",
         "account_statement_import_ofx_by_acctid",
         "auth_admin_passkey",
