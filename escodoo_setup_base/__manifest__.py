@@ -95,7 +95,7 @@
         # "mis_template_financial_report",
         "portal",
         "product",
-        "product_contract",
+        # "product_contract",
         "product_expiry",
         "purchase",
         "purchase_default_terms_conditions",
