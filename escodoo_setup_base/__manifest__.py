@@ -52,7 +52,7 @@
         "fleet_vehicle_fuel_capacity",
         # "fleet_vehicle_log_fuel",
         "fleet_vehicle_fuel_type_ethanol",
-        "fleet_vehicle_history_date_end",
+        # "fleet_vehicle_history_date_end",
         "fleet_vehicle_inspection_template",
         "fleet_vehicle_notebook",
         "fleet_vehicle_pivot_graph",
