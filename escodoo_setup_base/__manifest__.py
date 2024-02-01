@@ -112,7 +112,7 @@
         # "sale_invoice_plan",
         "sale_management",
         "sale_stock",
-        "sale_transaction_form_link",
+        # "sale_transaction_form_link",
         "scrap_reason_code",
         "session_db",
         # "sign_oca",
