@@ -92,7 +92,7 @@
         # "mis_builder_cash_flow_forecast_purchase",
         # "mis_builder_cash_flow_forecast_sale",
         # "mis_builder_cash_flow_forecast_sale_invoice_plan",
-        "mis_template_financial_report",
+        # "mis_template_financial_report",
         "portal",
         "product",
         "product_contract",
