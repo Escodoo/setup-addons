@@ -62,7 +62,7 @@
         # "gamification_badge_report",
         "hr",
         "hr_contract",
-        "hr_contract_document",
+        # "hr_contract_document",
         "hr_contract_type",
         "hr_course",
         # "hr_course_survey",
