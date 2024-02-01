@@ -59,7 +59,7 @@
         # "fleet_vehicle_service_calendar",
         # "fleet_vehicle_service_kanban",
         # "fleet_vehicle_stock",
-        "gamification_badge_report",
+        # "gamification_badge_report",
         "hr",
         "hr_contract",
         "hr_contract_document",
