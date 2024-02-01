@@ -100,7 +100,7 @@
         "purchase",
         "purchase_default_terms_conditions",
         "purchase_order_line_menu",
-        "purchase_order_line_stock_available",
+        # "purchase_order_line_stock_available",
         "purchase_report_menu_move",
         # "purchase_request",
         # "purchase_work_acceptance_evaluation",
