@@ -48,7 +48,7 @@
         "delivery",
         "delivery_carrier_partner",
         "fleet_vehicle_calendar_year",
-        "fleet_vehicle_category",
+        # "fleet_vehicle_category",
         "fleet_vehicle_fuel_capacity",
         "fleet_vehicle_log_fuel",
         "fleet_vehicle_fuel_type_ethanol",
