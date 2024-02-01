@@ -128,7 +128,7 @@
         # "support_branding",
         "web_advanced_search",
         "web_escodoo_brand",
-        "web_pwa_oca",
+        # "web_pwa_oca",
         "web_responsive",
         "web_tour",
         "account_move_tier_validation",
