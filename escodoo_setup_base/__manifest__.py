@@ -33,7 +33,7 @@
         # "account_statement_import_ofx_by_acctid",
         "auth_admin_passkey",
         "base",
-        "base_address_city",
+        # "base_address_city",
         "base_address_extended",
         "base_automation",
         "base_setup",
