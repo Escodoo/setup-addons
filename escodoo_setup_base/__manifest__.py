@@ -12,7 +12,7 @@
     "depends": [
         "account_analytic_required",
         "account_asset_management",
-        "account_asset_management_fleet",
+        # "account_asset_management_fleet",
         "account_due_list",
         "account_due_list_payment_mode",
         "account_financial_report",
