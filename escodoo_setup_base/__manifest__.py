@@ -140,7 +140,7 @@
         "purchase_tier_validation",
         # "purchase_work_acceptance_tier_validation",
         "sale_tier_validation",
-        "stock_picking_tier_validation",
+        # "stock_picking_tier_validation",
         # "stock_request_tier_validation",
     ],
     "data": [],
