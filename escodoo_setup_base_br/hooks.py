@@ -11,10 +11,10 @@ def _default_image(env):
     Returns the default image encoded in base64 to be used for partners.
 
     Args:
-        env: The Odoo environment for accessing resources.
+        env (odoo.api.Environment): The Odoo environment for accessing resources.
 
     Returns:
-        String: Default image encoded in base64.
+        str: Default image encoded in base64.
     """
     image = False
     image_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'escodoo_badge.png')
@@ -28,10 +28,10 @@ def is_demo_data_installed(env):
     Checks whether demo data is installed in the Odoo environment.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
 
     Returns:
-        Bool: True if demo data is installed, False otherwise.
+        bool: True if demo data is installed, False otherwise.
     """
     demo_modules = env['ir.module.module'].search([('demo', '=', True)])
     return bool(demo_modules)
@@ -42,11 +42,10 @@ def _load_partner_escodoo(cr, env):
     Loads the Escodoo partner into the database if not already present.
 
     Args:
-        cr: Database cursor for executing SQL queries.
-        env: The Odoo environment for database access.
+        cr (odoo.sql_db.Cursor): Database cursor for executing SQL queries.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
-    escodoo_partner = env['res.partner'].search(
-        [('cnpj_cpf', '=', '03.684.524/0001-37')], limit=1)
+    escodoo_partner = env['res.partner'].search([('cnpj_cpf', '=', '03.684.524/0001-37')], limit=1)
     if not escodoo_partner:
         tools.convert_file(
             cr, "escodoo_setup_base_br", "data/res_partner.xml", None,
@@ -63,7 +62,7 @@ def _load_default_chart_of_accounts(env):
     Loads a default chart of accounts for companies that do not have one.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
     # Identifies companies without a chart of accounts
     companies_without_chart = env['res.company'].search([('chart_template_id', '=', False)])
@@ -86,7 +85,7 @@ def _update_companies(env):
     Updates all companies by setting the Escodoo partner as technical support.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
 
     all_company_records = env['res.company'].search([])
@@ -144,10 +143,10 @@ def _update_res_config_settings(env):
     by creating or updating an attachment for the icon image.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
 
-    # Obter a imagem padrão codificada em base64
+    # Get the default image encoded in base64
     image_base64 = _default_image(env)
     if image_base64:
         config_settings = env['res.config.settings'].create({})
@@ -170,7 +169,7 @@ def _add_group_to_admin_user(env):
     Adds the 'account.group_account_user' group to the admin user.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
     account_user_group = env.ref(
         'account.group_account_user', raise_if_not_found=False)
@@ -185,7 +184,7 @@ def _update_partners(env):
     First updates partners without a parent_id, then updates partners with a parent_id.
 
     Args:
-        env: The Odoo environment for database access.
+        env (odoo.api.Environment): The Odoo environment for database access.
     """
     if is_demo_data_installed(env):
         target_partner_names = ['KMEE', 'Akretion', 'Engenere']
@@ -225,7 +224,7 @@ def post_init_hook(cr, registry):
     Post-initialization hook for configuring module setup.
 
     Args:
-        cr: Database cursor for executing SQL queries.
+        cr (odoo.sql_db.Cursor): Database cursor for executing SQL queries.
         registry: Odoo database registry.
     """
     env = api.Environment(cr, SUPERUSER_ID, {})
@@ -236,10 +235,10 @@ def post_init_hook(cr, registry):
     _add_group_to_admin_user(env)
     _update_partners(env)
 
-    # Configurar o ambiente Odoo
+    # Configure the Odoo environment
     config = tools.config
 
-    # Obter o nome da base de dados
+    # Get the database name
     db_name = config['db_name']
 
     db_name_uppercase = db_name.upper()
@@ -249,3 +248,8 @@ def post_init_hook(cr, registry):
     env["ir.config_parameter"].set_param("pwa.manifest.name", f"Odoo Online {db_name_uppercase}")
     env["ir.config_parameter"].set_param("pwa.manifest.short_name", f"Odoo {db_name_uppercase}")
     env["ir.config_parameter"].set_param("pwa.manifest.theme_color", "#FFFFFF")
+    # env["ir.config_parameter"].set_param("support_company", "Escodoo Sistemas")
+    # env["ir.config_parameter"].set_param("support_company_url", "https://www.escodoo.com.br")
+    # env["ir.config_parameter"].set_param("support_branding_color", "#fff")
+    # env["ir.config_parameter"].set_param("support_email", "suporte@escodoo.com.br")
+    # env["ir.config_parameter"].set_param("support_release", "14.0")
