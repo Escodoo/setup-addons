@@ -96,6 +96,9 @@ def _update_companies(env):
     company_logo_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'your_company_logo.png')
     company_logo_image = base64.b64encode(open(company_logo_path, 'rb').read()) if company_logo_path else False
 
+    company_favicon_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'escdooo_badge.png')
+    company_favicon_image = base64.b64encode(open(company_favicon_path, 'rb').read()) if company_logo_path else False
+
     values = {
         'country_id': env.ref('base.br').id,
     }
@@ -103,15 +106,36 @@ def _update_companies(env):
     if company_logo_image:
         values.update({'logo': company_logo_image})
 
+    if company_favicon_image:
+        values.update({'favicon': company_favicon_image})
+
     if escodoo_partner:
         values.update({'technical_support_id': escodoo_partner.id})
 
+    # External Report Layout Configuration
+    values.update(
+        {
+            'report_header': 'Soluções Empresariais',
+            'report_footer': 'Conheça o Odoo Online da Escodoo https://escodoo.com.br/odoo-online',
+            'font': 'Raleway',
+            'paperformat_id': env.ref('base.paperformat_euro').id,
+        }
+    )
+
+    # Fiscal Data Configuration
+    values.update(
+        {
+            # 'piscofins_id': env.ref('l10n_br_fiscal.tax_pis_cofins_columativo').id,
+            # 'icms_regulation_id': env.ref('l10n_br_fiscal.tax_icms_regulation').id,
+            # 'ripi': True,
+            'document_type_id': env.ref('l10n_br_fiscal.document_55').id,
+            'sale_create_invoice_policy': 'sale_order',
+            'purchase_create_invoice_policy': 'purchase_order',
+        }
+    )
+
     for company in all_company_records:
         company.write(values)
-
-    # falta o regime pis/cofins
-    # falta o regime do icms
-    # ativar RIPI
 
 
 def _update_res_config_settings(env):
@@ -127,7 +151,17 @@ def _update_res_config_settings(env):
     image_base64 = _default_image(env)
     if image_base64:
         config_settings = env['res.config.settings'].create({})
-        config_settings.write({'pwa_icon': image_base64})
+        config_settings.write(
+            {
+                'pwa_icon': image_base64,
+                'external_report_layout_id': env.ref("web.external_layout_background"),
+                'default_invoice_policy': 'order',
+                'default_purchase_method': 'purchase',
+                'lock_confirmed_po': True,  # Purchase
+                'group_auto_done_setting': True,  # Sale
+            }
+
+        )
         config_settings.execute()
 
 
@@ -198,7 +232,7 @@ def post_init_hook(cr, registry):
     _load_partner_escodoo(cr, env)
     _update_companies(env)
     _update_res_config_settings(env)
-    _load_default_chart_of_accounts(env)
+    # _load_default_chart_of_accounts(env)
     _add_group_to_admin_user(env)
     _update_partners(env)
 
@@ -215,8 +249,3 @@ def post_init_hook(cr, registry):
     env["ir.config_parameter"].set_param("pwa.manifest.name", f"Odoo Online {db_name_uppercase}")
     env["ir.config_parameter"].set_param("pwa.manifest.short_name", f"Odoo {db_name_uppercase}")
     env["ir.config_parameter"].set_param("pwa.manifest.theme_color", "#FFFFFF")
-    # env["ir.config_parameter"].set_param("support_company", "Escodoo Sistemas")
-    # env["ir.config_parameter"].set_param("support_company_url", "https://www.escodoo.com.br")
-    # env["ir.config_parameter"].set_param("support_branding_color", "#fff")
-    # env["ir.config_parameter"].set_param("support_email", "suporte@escodoo.com.br")
-    # env["ir.config_parameter"].set_param("support_release", "14.0")
