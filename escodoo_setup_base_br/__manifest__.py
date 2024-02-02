@@ -53,7 +53,7 @@
         # "l10n_br_stock_account",
         # "l10n_br_stock_account_report",
         "l10n_br_zip",
-        "spec_driven_model",
+        # "spec_driven_model",
     ],
     "data": [],
     "demo": [],
