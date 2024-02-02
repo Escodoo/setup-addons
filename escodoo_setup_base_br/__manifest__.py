@@ -11,7 +11,7 @@
     "website": "https://github.com/Escodoo/base-addons",
     "depends": [
         "escodoo_setup_base",
-        l10n_br_account,
+        "l10n_br_account",
         "l10n_br_account_due_list",
         # "l10n_br_account_fleet",
         # "l10n_br_account_nfe",
