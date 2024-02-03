@@ -114,7 +114,6 @@
         "sale_stock",
         # "sale_transaction_form_link",
         "scrap_reason_code",
-        "session_db",
         # "sign_oca",
         # "survey",
         "stock",
