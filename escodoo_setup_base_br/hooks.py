@@ -92,21 +92,15 @@ def _update_companies(env):
 
     escodoo_partner = env.ref('escodoo_setup_base_br.partner_escodoo', raise_if_not_found=False)
 
-    company_logo_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'your_company_logo.png')
-    company_logo_image = base64.b64encode(open(company_logo_path, 'rb').read()) if company_logo_path else False
-
-    company_favicon_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'escdooo_badge.png')
-    company_favicon_image = base64.b64encode(open(company_favicon_path, 'rb').read()) if company_logo_path else False
+    your_company_logo_path = get_module_resource('escodoo_setup_base_br', 'static/img', 'your_company_logo.png')
+    your_company_logo_image = base64.b64encode(open(your_company_logo_path, 'rb').read()) if your_company_logo_path else False
 
     values = {
         'country_id': env.ref('base.br').id,
     }
 
-    if company_logo_image:
-        values.update({'logo': company_logo_image})
-
-    if company_favicon_image:
-        values.update({'favicon': company_favicon_image})
+    if your_company_logo_image:
+        values.update({'logo': your_company_logo_image})
 
     if escodoo_partner:
         values.update({'technical_support_id': escodoo_partner.id})
@@ -118,6 +112,7 @@ def _update_companies(env):
             'report_footer': 'Conheça o Odoo Online da Escodoo https://escodoo.com.br/odoo-online',
             'font': 'Raleway',
             'paperformat_id': env.ref('base.paperformat_euro').id,
+            'favicon': _default_image(env),
         }
     )
 
