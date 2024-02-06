@@ -10,6 +10,7 @@
     'author': 'Escodoo',
     'website': 'https://github.com/Escodoo/setup-addons',
     'depends': [
+        # 'access_apps', # na 14.0 não róla
         'access_restricted',
         'auth_admin_passkey',
         'auth_signup_block_admin_password_reset',
