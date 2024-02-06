@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="access_restricted.not_admin_tenant_rule" model="ir.rule">
+        <field name="domain_force">[('id', 'not in', [1,2])]</field>
+    </record>
+
+</odoo>

@@ -1,47 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
 
-    <record id="partner_escodoo" model="res.partner">
+    <record id="escodoo_setup.partner_escodoo" model="res.partner">
         <field eval="0" name="employee"/>
-        <field eval="1" name="active"/>
-        <field name="is_company" eval="1"/>
         <field name="cnpj_cpf">03.684.524/0001-37</field>
         <field name="inscr_mun">1448</field>
         <field name="legal_name">Núcleo de Estudos em Projetos de Ribeirão Preto</field>
-        <field name="name">Escodoo Sistemas</field>
         <field name="district">Jardim Califórnia</field>
         <field name="city_id" ref="l10n_br_base.city_3543402"/>
-        <field name="zip">14026-220</field>
-        <field name="country_id" ref="base.br"/>
-        <field name="street_number">64</field>
-        <field name="phone">(11) 9999-9999</field>
-        <field name="street">Rua Raul Peixoto</field>
-        <field name="website">https://www.escodoo.com.br</field>
-        <field name="email">contato@escodoo.com.br</field>
-        <field name="state_id" ref="base.state_br_sp"/>
-        <field name="image_1920" type="base64" file="escodoo_setup_base_br/static/img/escodoo_badge.png"/>
     </record>
-
-    <record id="partner_escodoo_suporte" model="res.partner">
-        <field name="name">Suporte Escodoo</field>
-        <field name="parent_id" ref="partner_escodoo"/>
-        <field name="function">Suporte Escodoo</field>
-        <field name="email">suporte@escodoo.com.br</field>
-        <field name="phone">(11) 9999-9999</field>
-        <!-- <field name="image_1920" type="base64" file="escodoo_setup_base_br/static/img/escodoo_badge.png"/> -->
-    </record>
-
-    <record id="partner_escodoo_consultoria" model="res.partner">
-        <field name="name">Consultoria Escodoo</field>
-        <field name="parent_id" ref="partner_escodoo"/>
-        <field name="function">Consultoria Escodoo</field>
-        <field name="email">consultoria@escodoo.com.br</field>
-        <field name="phone">(11) 9999-9999</field>
-        <!-- <field name="image_1920" type="base64" file="escodoo_setup_base_br/static/img/escodoo_badge.png"/> -->
-    </record>
-
-    <!-- <function model="res.partner" name="_onchange_fiscal_profile_id">
-        <value eval="[ref('partner_escodoo')]"/>
-    </function> -->
 
 </odoo>
