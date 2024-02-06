@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="partner_escodoo_customer_system_manager" model="res.partner" >
+        <field name="name">System Manager</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="email">system.manager@example.com</field>
+        <field name="image_1920" type="base64" file="base/static/img/avatar_grey.png"/>
+    </record>
+
+    <record id="partner_escodoo" model="res.partner">
+        <field eval="1" name="active"/>
+        <field name="is_company" eval="1"/>
+        <field name="vat">03.684.524/0001-37</field>
+        <field name="name">Escodoo Sistemas</field>
+        <field name="city">Ribeirão Preto</field>
+        <field name="zip">14026-220</field>
+        <field name="country_id" ref="base.br"/>
+        <field name="street_number">64</field>
+        <field name="phone">(11) 9999-9999</field>
+        <field name="street">Rua Raul Peixoto</field>
+        <field name="website">https://escodoo.com.br</field>
+        <field name="email">contato@escodoo.com.br</field>
+        <field name="state_id" ref="base.state_br_sp"/>
+        <field name="image_1920" type="base64" file="escodoo_setup/static/src/img/escodoo_badge.png"/>
+    </record>
+
+    <record id="partner_escodoo_support" model="res.partner">
+        <field name="name">Suporte Escodoo</field>
+        <field name="parent_id" ref="partner_escodoo"/>
+        <field name="function">Suporte Escodoo</field>
+        <field name="email">suporte@escodoo.com.br</field>
+        <field name="phone">(11) 9999-9999</field>
+    </record>
+
+    <record id="partner_escodoo_consulting" model="res.partner">
+        <field name="name">Consultoria Escodoo</field>
+        <field name="parent_id" ref="partner_escodoo"/>
+        <field name="function">Consultoria Escodoo</field>
+        <field name="email">consultoria@escodoo.com.br</field>
+        <field name="phone">(11) 9999-9999</field>
+    </record>
+
+
+</odoo>

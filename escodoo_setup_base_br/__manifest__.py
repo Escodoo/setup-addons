@@ -55,7 +55,10 @@
         "l10n_br_zip",
         "spec_driven_model",
     ],
-    "data": [],
+    'data': [
+        'data/res_partner.xml',
+        'data/res_users.xml',
+    ],
     "demo": [],
     "post_init_hook": "post_init_hook",
 }
