@@ -13,7 +13,8 @@
         # 'access_apps', # na 14.0 não róla
         'access_restricted',
         'auth_admin_passkey',
-        'auth_signup_block_admin_password_reset',
+        'auth_signup',
+        # 'auth_signup_block_admin_password_reset',
         'base_address_city',
         'base_address_extended',
         'base_automation',
@@ -31,6 +32,7 @@
         'data/res_partner.xml',
         'data/res_users.xml',
         'data/res_company.xml'
+        'security/access_restricted_security.xml',
     ],
     'demo': [
     ],
