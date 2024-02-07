@@ -14,7 +14,6 @@
         'access_restricted',
         'auth_admin_passkey',
         'auth_signup',
-        # 'auth_signup_block_admin_password_reset',
         'base_address_city',
         'base_address_extended',
         'base_automation',
@@ -31,8 +30,10 @@
     'data': [
         'data/res_partner.xml',
         'data/res_users.xml',
-        'data/res_company.xml'
-        'security/access_restricted_security.xml',
+        'data/res_company.xml',
+        'security/res_groups.xml',
+        'security/ir_rule.xml',
+        'security/ir.model.access.csv',
     ],
     'demo': [
     ],

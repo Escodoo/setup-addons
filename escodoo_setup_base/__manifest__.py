@@ -127,9 +127,10 @@
         # "support_branding",
         # "survey",
     ],
-
     "data": [
+        'data/res_partner.xml',
         'data/res_users.xml',
+        'views/menu_items.xml',
     ],
     "demo": [],
 }

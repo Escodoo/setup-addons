@@ -56,6 +56,7 @@
         "spec_driven_model",
     ],
     'data': [
+        'data/res_company.xml',
         'data/res_partner.xml',
         'data/res_users.xml',
     ],

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
 
-    <!-- Escodoo Customer System Manager-->
-    <record id="escodoo_setup.user_escodoo_customer_system_manager" model="res.users">
+    <!-- System Manager -->
+    <record id="escodoo_setup.user_system_manager" model="res.users">
         <field name="groups_id" eval="[(4, ref('account.group_account_invoice')),
                                        (4, ref('account.group_account_manager')),
                                        (4, ref('account.group_account_user')),

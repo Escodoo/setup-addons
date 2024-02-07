@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="hr.res_partner_admin_private_address" model="res.partner">
+        <field name="name">Administrador Escodoo</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="email">admin@example.com</field>
+        <field name="type">private</field>
+    </record>
+
+</odoo>

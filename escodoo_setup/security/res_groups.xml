@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record model="res.groups" id="group_system_manager">
+        <field name="name">System Manager</field>
+        <field name="implied_ids" eval="[Command.link(ref('base.group_erp_manager'))]"/>
+        <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin')), Command.link(ref('escodoo_setup.user_system_manager'))]"/>
+    </record>
+
+</odoo>

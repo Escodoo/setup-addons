@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
 
-    <record id="partner_escodoo_customer_system_manager" model="res.partner" >
+    <record id="partner_system_manager" model="res.partner" >
         <field name="name">System Manager</field>
         <field name="company_id" ref="base.main_company"/>
         <field name="email">system.manager@example.com</field>
