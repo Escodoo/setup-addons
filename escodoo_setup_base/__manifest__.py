@@ -131,6 +131,7 @@
         'data/res_partner.xml',
         'data/res_users.xml',
         'views/menu_items.xml',
+        'security/ir.model.access.csv',
     ],
     "demo": [],
 }
