@@ -1,2 +1,2 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_mail_alias_system_manager","mail_alias_system_manager","mail.model_mail_alias","group_system_manager",1,1,1,0
+"access_mail_alias_system_manager","mail_alias_system_manager","mail.model_mail_alias","escodoo_setup.group_system_manager",1,1,1,0
