@@ -97,7 +97,7 @@ def _update_res_config_settings(env):
             'group_auto_done_setting': True,  # Sale
             'group_stock_multi_locations': True,  # Multiplos Locais de Estoque
             'group_stock_adv_location': True,  # Multiplos passos de Estoque
-            'group_stock_tracking_owner' : True,  # Dono do Produto
+            'group_stock_tracking_owner': True,  # Dono do Produto
             'group_stock_tracking_lot': True,  # Pacotes de Produtos
         }
     )
