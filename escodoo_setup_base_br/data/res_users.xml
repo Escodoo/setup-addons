@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Escodoo Customer System Manager-->
+    <record id="escodoo_setup.user_system_manager" model="res.users">
+        <field name="groups_id" eval="[(4, ref('l10n_br_fiscal.group_manager')),
+                                       (4, ref('l10n_br_fiscal.group_user'))]"/>
+    </record>
+</odoo>

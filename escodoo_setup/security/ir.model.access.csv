@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_ir_actions_act_window_system_manager","ir_actions_act_window_system_manager","base.model_ir_actions_act_window","group_system_manager",1,1,1,1
+"access_ir_cron_group_cron_system_manager","ir_cron group_cron_system_manager","base.model_ir_cron","group_system_manager",1,1,1,1
+"access_ir_mail_server_system_manager","ir_mail_server_system_manager","base.model_ir_mail_server","group_system_manager",1,1,1,1
+"access_res_config_system_manager","access.res.config_system_manager","base.model_res_config","group_system_manager",1,1,1,0
+"access_res_config_settings_system_manager","access.res.config.settings_system_manager","base.model_res_config_settings","group_system_manager",1,1,1,0
