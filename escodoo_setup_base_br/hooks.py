@@ -49,6 +49,21 @@ from odoo.modules.module import get_module_resource
 #         chart_template.with_env(env_cr).try_loading(company=company)
 
 
+def demo_data_installed(env):
+    """Check if demo data is installed."""
+    demo_modules = env['ir.module.module'].search([('demo', '=', True)])
+    return bool(demo_modules)
+
+
+def _set_company_permissions(env):
+
+    if demo_data_installed(env):
+        user_system_manager = env.ref('escodoo_setup.user_system_manager', raise_if_not_found=False)
+        companies = env['res.company'].search([])
+        user_system_manager.write({'company_ids': [(6, 0, companies.ids)]})
+        return
+
+
 def _update_companies(env):
     """
     Updates all companies by setting the Escodoo partner as technical support.
@@ -99,6 +114,7 @@ def _update_res_config_settings(env):
             'group_stock_adv_location': True,  # Multiplos passos de Estoque
             'group_stock_tracking_owner' : True,  # Dono do Produto
             'group_stock_tracking_lot': True,  # Pacotes de Produtos
+            'group_analytic_accounting': True, # Ativa contabilidade analitica
         }
     )
 
@@ -117,3 +133,5 @@ def post_init_hook(cr, registry):
     # _load_partner_escodoo(cr, env)
     _update_companies(env)
     _update_res_config_settings(env)
+    _set_company_permissions(env)
+    
