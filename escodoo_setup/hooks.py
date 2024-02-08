@@ -17,12 +17,6 @@ def get_default_image(env):
     return base64.b64encode(open(image_path, 'rb').read()) if image_path else False
 
 
-def demo_data_installed(env):
-    """Check if demo data is installed."""
-    demo_modules = env['ir.module.module'].search([('demo', '=', True)])
-    return bool(demo_modules)
-
-
 def update_companies(env):
     """Update all companies with the Escodoo partner logo."""
     all_companies = env['res.company'].search([])
@@ -53,39 +47,12 @@ def add_group_to_admin_user(env):
         admin_user.write({'groups_id': [(4, account_user_group.id)]})
 
 
-def update_partners(env):
-    """Update partner names and contact information."""
-    if demo_data_installed(env):
-        target_partners = ['KMEE', 'Akretion', 'Engenere']
-        partners = env['res.partner'].search([('name', 'ilike', '|'.join(target_partners))])
-        for index, partner in enumerate(partners.filtered(lambda p: not p.parent_id), start=1):
-            partner_name = f'Escodoo Company {index}'
-            partner.write({
-                'name': partner_name,
-                'legal_name': partner_name,
-                'website': 'https://escodoo.com.br',
-                'email': 'test@escodoo.com.br',
-                'image_1920': get_default_image(env)
-            })
-        for partner in partners.filtered(lambda p: p.parent_id):
-            partner_name = f'{partner.parent_id.name} - {partner.state_id.name}'
-            partner.write({
-                'name': partner_name,
-                'legal_name': partner_name,
-                'website': 'https://escodoo.com.br',
-                'email': 'test@escodoo.com.br'
-            })
-    else:
-        print('Skipping partner update because demo data is not installed.')
-
-
 def post_init_hook(cr, registry):
     """Post-initialization hook for module setup."""
     env = api.Environment(cr, SUPERUSER_ID, {})
     update_companies(env)
     update_res_config_settings(env)
     add_group_to_admin_user(env)
-    update_partners(env)
 
     db_name = tools.config['db_name'].upper()
     env["ir.config_parameter"].set_param("auth_signup.invitation_scope", "b2b")
