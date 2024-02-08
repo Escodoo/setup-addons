@@ -6,54 +6,37 @@ from odoo import api, tools, SUPERUSER_ID
 from odoo.modules.module import get_module_resource
 
 
-# def _load_partner_escodoo(cr, env):
-#     """
-#     Loads the Escodoo partner into the database if not already present.
-
-#     Args:
-#         cr (odoo.sql_db.Cursor): Database cursor for executing SQL queries.
-#         env (odoo.api.Environment): The Odoo environment for database access.
-#     """
-#     escodoo_partner = env['res.partner'].search([('cnpj_cpf', '=', '03.684.524/0001-37')], limit=1)
-#     if not escodoo_partner:
-#         tools.convert_file(
-#             cr, "escodoo_setup_base_br", "data/res_partner.xml", None,
-#             mode="init", noupdate=True, kind="init")
-#     else:
-#         env['ir.model.data']._update_xmlids([{
-#             'xml_id': 'escodoo_setup_base_br.partner_escodoo',
-#             'record': escodoo_partner, 'noupdate': True,
-#         }])
-
-
-# def _load_default_chart_of_accounts(env):
-#     """
-#     Loads a default chart of accounts for companies that do not have one.
-
-#     Args:
-#         env (odoo.api.Environment): The Odoo environment for database access.
-#     """
-#     # Identifies companies without a chart of accounts
-#     companies_without_chart = env['res.company'].search([('chart_template_id', '=', False)])
-
-#     # Loads a default chart of accounts (adjust as necessary)
-#     chart_template = env.ref('l10n_br_coa_generic.l10n_br_coa_generic_template', raise_if_not_found=False)
-#     if not chart_template:
-#         # If the default chart of accounts is not found, return or raise an error as necessary
-#         return
-
-#     # Associates the chart of accounts with companies that do not have one
-#     for company in companies_without_chart:
-#         # Sets up the environment with the specific company to correctly load the chart of accounts
-#         env_cr = api.Environment(env.cr, company.id, env.context)
-#         chart_template.with_env(env_cr).try_loading(company=company)
-
-
 def demo_data_installed(env):
     """Check if demo data is installed."""
     demo_modules = env['ir.module.module'].search([('demo', '=', True)])
     return bool(demo_modules)
 
+
+def _update_demo_partners(env):
+    """Update partner names and contact information."""
+    if demo_data_installed(env):
+        target_partners = ['KMEE', 'Akretion', 'Engenere']
+        partners = env['res.partner'].search([('name', 'ilike', '|'.join(target_partners))])
+        for index, partner in enumerate(partners.filtered(lambda p: not p.parent_id), start=1):
+            partner_name = f'Escodoo Company {index}'
+            partner.write({
+                'name': partner_name,
+                'legal_name': partner_name,
+                'website': 'https://escodoo.com.br',
+                'email': 'test@escodoo.com.br',
+                'image_1920': get_default_image(env)
+            })
+        for partner in partners.filtered(lambda p: p.parent_id):
+            partner_name = f'{partner.parent_id.name} - {partner.state_id.name}'
+            partner.write({
+                'name': partner_name,
+                'legal_name': partner_name,
+                'website': 'https://escodoo.com.br',
+                'email': 'test@escodoo.com.br'
+            })
+    else:
+        print('Skipping partner update because demo data is not installed.')
+        
 
 def _set_company_permissions(env):
 
@@ -134,4 +117,6 @@ def post_init_hook(cr, registry):
     _update_companies(env)
     _update_res_config_settings(env)
     _set_company_permissions(env)
+    _update_demo_partners(env)
+
     
