@@ -42,6 +42,7 @@
         "contacts",
         "contract",
         "crm",
+        "crm_claim_code",
         "currency_rate_update",
         "date_range",
         "date_range_account",
