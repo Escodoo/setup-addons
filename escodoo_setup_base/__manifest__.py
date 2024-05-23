@@ -57,7 +57,7 @@
         "fleet_vehicle_history_date_end",
         "fleet_vehicle_inspection_template",
         "fleet_vehicle_notebook",
-        "fleet_vehicle_owner",
+        "fleet_vehicle_ownership",
         "fleet_vehicle_pivot_graph",
         "fleet_vehicle_purchase",
         "fleet_vehicle_service_calendar",
