@@ -57,6 +57,9 @@
         "l10n_br_stock_account_report",
         "l10n_br_zip",
         "spec_driven_model",
+        # escodoo/account-addons
+        "l10n_br_mis_builder_cash_flow_sale",
+        "account_move_visible_date_maturity",
     ],
     "data": [],
     "demo": [],
