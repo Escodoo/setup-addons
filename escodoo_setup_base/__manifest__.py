@@ -126,6 +126,7 @@
         # "survey",
         "stock",
         "stock_account",
+        "stock_account_valuation_report",
         "stock_landed_costs",
         "stock_picking_analytic",
         "stock_picking_invoicing",
