@@ -85,7 +85,7 @@
         # "mail_tracking_mass_mailing",
         # "mass_mailing",
         # "mass_mailing_resend",
-        "marketing_crm_partner"
+        "marketing_crm_partner",
         "mgmtsystem_audit",
         "mgmtsystem_claim",
         "mgmtsystem_nonconformity",
