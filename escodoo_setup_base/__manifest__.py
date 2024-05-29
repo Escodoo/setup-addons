@@ -129,6 +129,7 @@
         "web_escodoo_brand",
         # "web_pwa_oca",
         "web_responsive",
+        "web_theme_classic",
         "web_tour",
         "account_move_tier_validation",
         #"account_move_tier_validation_approver",
