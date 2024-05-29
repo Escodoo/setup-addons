@@ -32,6 +32,7 @@
         # "account_reconciliation_widget",
         # "account_statement_import_ofx_by_acctid",
         "auth_admin_passkey",
+        "automation_oca",
         "base",
         # "base_address_city",
         "base_address_extended",
