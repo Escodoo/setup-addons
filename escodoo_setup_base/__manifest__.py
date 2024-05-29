@@ -116,6 +116,7 @@
         # "sale_transaction_form_link",
         "scrap_reason_code",
         "sign_oca",
+        "spreadsheet_dashboard_oca",
         # "survey",
         "stock",
         "stock_account",
