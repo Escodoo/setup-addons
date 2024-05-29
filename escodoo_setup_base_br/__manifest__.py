@@ -37,7 +37,7 @@
         "l10n_br_ie_search",
         "l10n_br_mdfe_spec",
         "l10n_br_mis_report",
-        "l10n_br_nfe",
+        # "l10n_br_nfe",
         "l10n_br_nfe_spec",
         "l10n_br_nfse",
         "l10n_br_nfse_focus",
