@@ -26,7 +26,7 @@
         "account_move_template",
         # "account_move_visible_date_maturity",
         "account_payment",
-        # "account_payment_order",
+        "account_payment_order",
         "account_payment_partner",
         # "account_payment_paired_internal_transfer",
         # "account_reconciliation_widget",
