@@ -33,6 +33,7 @@
         "l10n_br_fiscal_certificate",
         "l10n_br_fiscal_closing",
         "l10n_br_fiscal_dfe",
+        "l10n_br_fiscal_edi",
         "l10n_br_hr",
         "l10n_br_ie_search",
         "l10n_br_mdfe_spec",
