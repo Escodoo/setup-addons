@@ -18,6 +18,7 @@
         "account_financial_report",
         "account_lock_date_update",
         "account_lock_to_date",
+        "account_in_payment",
         "account_menu",
         "account_move_base_import",
         "account_move_csv_import",
