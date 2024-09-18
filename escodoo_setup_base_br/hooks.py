@@ -124,7 +124,7 @@ def _update_companies(env):
             # 'ripi': True,
             'document_type_id': env.ref('l10n_br_fiscal.document_55').id,
             'sale_create_invoice_policy': 'sale_order',
-            'purchase_create_invoice_policy': 'purchase_order',
+            'purchase_invoicing_policy': 'purchase_order',
         }
     )
 
