@@ -123,7 +123,7 @@ def _update_companies(env):
             # 'icms_regulation_id': env.ref('l10n_br_fiscal.tax_icms_regulation').id,
             # 'ripi': True,
             'document_type_id': env.ref('l10n_br_fiscal.document_55').id,
-            'sale_create_invoice_policy': 'sale_order',
+            'sale_invoicing_policy': 'sale_order',
             'purchase_invoicing_policy': 'purchase_order',
         }
     )
