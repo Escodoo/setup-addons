@@ -16,7 +16,7 @@
         "l10n_br_account_nfe",
         "l10n_br_account_payment_brcobranca",
         "l10n_br_account_payment_order",
-        "l10n_br_account_withholding",
+        #"l10n_br_account_withholding",
         "l10n_br_base",
         "l10n_br_cnpj_search",
         "l10n_br_cnab_structure",
