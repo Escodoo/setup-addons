@@ -1,7 +1,7 @@
 # Copyright 2024 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import base64
+import base64, time
 from odoo import api, tools, SUPERUSER_ID
 from odoo.modules.module import get_module_resource
 
@@ -22,7 +22,6 @@ def _default_image(env):
         image = base64.b64encode(open(image_path, 'rb').read())
     return image
 
-
 def is_demo_data_installed(env):
     """
     Checks whether demo data is installed in the Odoo environment.
@@ -35,7 +34,6 @@ def is_demo_data_installed(env):
     """
     demo_modules = env['ir.module.module'].search([('demo', '=', True)])
     return bool(demo_modules)
-
 
 def _load_partner_escodoo(cr, env):
     """
@@ -184,8 +182,7 @@ def _update_partners(env):
             })
     else:
         print('Skipping partner update because demo data is not installed.')
-
-
+    
 def post_init_hook(cr, registry):
     """
     Post-initialization hook for configuring module setup.
@@ -195,6 +192,55 @@ def post_init_hook(cr, registry):
         registry: Odoo database registry.
     """
     env = api.Environment(cr, SUPERUSER_ID, {})
+    
+    modules_to_install = [        
+        "escodoo_setup_base",
+        "l10n_br_account",
+        "l10n_br_account_due_list",
+        "l10n_br_account_nfe",
+        "l10n_br_account_payment_brcobranca",
+        "l10n_br_account_payment_order",        
+        "l10n_br_base",
+        "l10n_br_cnpj_search",
+        "l10n_br_cnab_structure",
+        "l10n_br_coa",
+        "l10n_br_coa_generic",
+        "l10n_br_coa_simple",
+        "l10n_br_crm",
+        "l10n_br_crm_cnpj_search",
+        "l10n_br_currency_rate_update",
+        "l10n_br_fiscal",
+        "l10n_br_fiscal_certificate",
+        "l10n_br_fiscal_closing",
+        "l10n_br_fiscal_dfe",
+        "l10n_br_hr",
+        "l10n_br_ie_search",
+        "l10n_br_nfe",
+        "l10n_br_nfe_spec",
+        "l10n_br_nfse",
+        "l10n_br_nfse_focus",
+        "l10n_br_purchase",
+        "l10n_br_resource",
+        "l10n_br_sale",
+        "l10n_br_stock",
+        "l10n_br_stock_account",
+        "l10n_br_zip",
+        "spec_driven_model",
+    ]
+    modules = env['ir.module.module'].search([
+        ('name', 'in', modules_to_install),
+        ('state', '=', 'uninstalled')
+    ])    
+    modules.button_install()
+    
+    while True:
+        env.invalidate_all()  # limpa cache
+        modules = env['ir.module.module'].search([
+            ('name', 'in', modules_to_install)
+        ])
+        if all(mod.state == 'installed' for mod in modules):
+            break
+        
     _load_partner_escodoo(cr, env)
     _update_companies(env)
     # _update_res_config_settings(env)
