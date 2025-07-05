@@ -52,7 +52,7 @@ def _load_partner_escodoo(cr, env):
         env: The Odoo environment for database access.
     """
     escodoo_partner = env["res.partner"].search(
-        [("cnpj_cpf", "=", "03.684.524/0001-37")], limit=1
+        [("vat", "=", "03.684.524/0001-37")], limit=1
     )
     if not escodoo_partner:
         tools.convert_file(
@@ -101,8 +101,8 @@ def _load_default_chart_of_accounts(env):
     for company in companies_without_chart:
         # Sets up the environment with the specific company to correctly load the
         # chart of accounts
-        env_cr = api.Environment(env.cr, company.id, env.context)
-        chart_template.with_env(env_cr).try_loading(company=company)
+        # env_cr = api.Environment(env.cr, company.id, env.context)
+        chart_template.with_env(env).try_loading(company=company)
 
 
 def _update_companies(env):
