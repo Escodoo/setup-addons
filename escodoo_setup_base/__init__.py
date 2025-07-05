@@ -1,1 +1,2 @@
-from .hooks import post_init_hook
+# Copyright 2024 - TODAY, Escodoo
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
