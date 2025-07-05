@@ -16,9 +16,9 @@ Escodoo Setup Base
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-Escodoo%2Fserver--addons-lightgray.png?logo=github
-    :target: https://github.com/Escodoo/server-addons/tree/14.0/escodoo_setup_base
-    :alt: Escodoo/server-addons
+.. |badge3| image:: https://img.shields.io/badge/github-Escodoo%2Fsetup--addons-lightgray.png?logo=github
+    :target: https://github.com/Escodoo/setup-addons/tree/16.0/escodoo_setup_base
+    :alt: Escodoo/setup-addons
 
 |badge1| |badge2| |badge3|
 
@@ -31,10 +31,10 @@ Escodoo Setup Base
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/Escodoo/server-addons/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/Escodoo/setup-addons/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/Escodoo/server-addons/issues/new?body=module:%20escodoo_setup_base%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/Escodoo/setup-addons/issues/new?body=module:%20escodoo_setup_base%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -49,6 +49,6 @@ Authors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `Escodoo/server-addons <https://github.com/Escodoo/server-addons/tree/14.0/escodoo_setup_base>`_ project on GitHub.
+This module is part of the `Escodoo/setup-addons <https://github.com/Escodoo/setup-addons/tree/16.0/escodoo_setup_base>`_ project on GitHub.
 
 You are welcome to contribute.
