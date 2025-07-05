@@ -1,0 +1,5 @@
+odoo-test-helper  # Needed by spec_driven_model
+pyopenssl==22.1.0
+nfelib<=2.0.7
+xmldiff
+odoo-addon-web-escodoo_brand @ git+https://github.com/Escodoo/base-addons@16.0#egg=odoo-addon-web_escodoo_brand&subdirectory=web_escodoo_brand
