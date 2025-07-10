@@ -5,7 +5,7 @@
     "name": "Escodoo Setup Base",
     "summary": """
         Escodoo Odoo Setup Base""",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/setup-addons",
@@ -19,14 +19,14 @@
         "account_move_template",
         "account_move_tier_validation",
         "account_payment",
-        "account_payment_invoice_online_payment_patch",
+        # "account_payment_invoice_online_payment_patch", # CHECAR
         "account_payment_mode",
         "account_payment_partner",
         "account_payment_purchase",
         "account_payment_purchase_stock",
         "account_payment_sale",
         "account_reconcile_oca",
-        "account_sequence",
+        # "account_sequence", # CHECAR
         "account_statement_base",
         "account_statement_import_base",
         "account_statement_import_file",
@@ -75,8 +75,8 @@
         "mail",
         "mail_debrand",
         "mis_builder",
-        "mis_builder_cash_flow",
-        "mis_template_financial_report",
+        # "mis_builder_cash_flow", # TODO: CHECAR
+        # "mis_template_financial_report", # TODO: CHECAR
         "partner_contact_access_link",
         # "password_security",
         "payment",
@@ -89,7 +89,7 @@
         "purchase",
         "purchase_default_terms_conditions",
         "purchase_order_line_menu",
-        "purchase_price_diff",
+        # "purchase_price_diff", # TODO: CHECAR
         "purchase_stock",
         "purchase_tier_validation",
         "remove_odoo_enterprise",
@@ -100,23 +100,23 @@
         "sale",
         "sale_crm",
         "sale_management",
-        "sale_product_configurator",
+        # "sale_product_configurator", # TODO: CHECAR
         "sale_product_template_tags",
         "sale_purchase",
         "sale_purchase_stock",
         "sale_stock",
-        "sale_stock_picking_invoicing",
+        # "sale_stock_picking_invoicing", # TODO: CHECAR
         "sale_tier_validation",
         "sales_team",
-        "scrap_reason_code",
+        # "scrap_reason_code", # TODO: CHECAR
         "server_action_mass_edit",
         "session_db",
         "spreadsheet",
         "spreadsheet_account",
         "spreadsheet_dashboard",
         "spreadsheet_dashboard_account",
-        "spreadsheet_dashboard_purchase",
-        "spreadsheet_dashboard_purchase_stock",
+        # "spreadsheet_dashboard_purchase", # TODO: CHECAR
+        # "spreadsheet_dashboard_purchase_stock", # TODO: CHECAR
         "spreadsheet_dashboard_sale",
         "spreadsheet_dashboard_stock_account",
         "sql_request_abstract",
@@ -124,20 +124,20 @@
         "stock_account",
         "stock_analytic",
         "stock_landed_costs",
-        "stock_picking_analytic",
+        # "stock_picking_analytic", # TODO: CHECAR
         "stock_picking_invoice_link",
-        "stock_picking_invoicing",
+        # "stock_picking_invoicing", # TODO: CHECAR
         "uom",
-        "uom_alias",
+        # "uom_alias", # TODO: CHECAR
         "utm",
         "web",
-        "web_advanced_search",
+        # "web_advanced_search", # TODO: CHECAR
         "web_dialog_size",
         "web_editor",
-        "web_escodoo_brand",
-        "web_kanban_gauge",
-        "web_listview_range_select",
-        "web_pwa_oca",
+        # "web_escodoo_brand",
+        # "web_kanban_gauge", # TODO: CHECAR
+        # "web_listview_range_select", # TODO: CHECAR
+        # "web_pwa_oca", # TODO: CHECAR
         "web_refresher",
         "web_responsive",
         "web_search_with_and",
