@@ -12,7 +12,7 @@
     "depends": [
         "escodoo_setup_base",
         "l10n_br_account_due_list",
-        "l10n_br_account_fleet",
+        # "l10n_br_account_fleet",
         "l10n_br_account_nfe",
         "l10n_br_account_payment_brcobranca",
         "l10n_br_account_payment_order",
@@ -42,7 +42,7 @@
         "l10n_br_nfe_spec",
         "l10n_br_nfse",
         "l10n_br_nfse_focus",
-        "l10n_br_portal",
+        # "l10n_br_portal",
         "l10n_br_product_contract",
         "l10n_br_purchase",
         "l10n_br_purchase_request",
@@ -59,7 +59,7 @@
         "l10n_br_zip",
         "spec_driven_model",
         # escodoo/account-addons
-        "l10n_br_mis_builder_cash_flow_sale",
+        # "l10n_br_mis_builder_cash_flow_sale",
         "account_move_visible_date_maturity",
     ],
     "data": [],
