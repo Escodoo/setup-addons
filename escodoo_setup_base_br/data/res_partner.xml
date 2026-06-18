@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo noupdate="1">
-
     <record id="partner_escodoo" model="res.partner">
         <field eval="0" name="employee" />
         <field eval="1" name="active" />
@@ -47,5 +46,4 @@
     <!-- <function model="res.partner" name="_onchange_fiscal_profile_id">
         <value eval="[ref('partner_escodoo')]"/>
     </function> -->
-
 </odoo>
