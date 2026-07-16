@@ -4,8 +4,8 @@
         <field eval="0" name="employee" />
         <field eval="1" name="active" />
         <field name="is_company" eval="1" />
-        <field name="cnpj_cpf">03.684.524/0001-37</field>
-        <field name="inscr_mun">1448</field>
+        <field name="vat">03.684.524/0001-37</field>
+        <field name="l10n_br_im_code">1448</field>
         <field name="legal_name">Núcleo de Estudos em Projetos de Ribeirão Preto</field>
         <field name="name">Escodoo Sistemas</field>
         <field name="district">Jardim Califórnia</field>

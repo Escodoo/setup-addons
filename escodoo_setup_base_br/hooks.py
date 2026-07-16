@@ -4,8 +4,7 @@
 import base64
 import logging
 
-from odoo import SUPERUSER_ID, api, tools
-from odoo.modules.module import get_module_resource
+from odoo import tools
 
 _logger = logging.getLogger(__name__)
 
@@ -21,9 +20,12 @@ def _default_image(env):
         String: Default image encoded in base64.
     """
     image = False
-    image_path = get_module_resource(
-        "escodoo_setup_base_br", "static/img", "escodoo_badge.png"
-    )
+    try:
+        image_path = tools.file_path(
+            "escodoo_setup_base_br/static/img/escodoo_badge.png"
+        )
+    except FileNotFoundError:
+        image_path = False
     if image_path:
         image = base64.b64encode(open(image_path, "rb").read())
     return image
@@ -43,12 +45,11 @@ def is_demo_data_installed(env):
     return bool(demo_modules)
 
 
-def _load_partner_escodoo(cr, env):
+def _load_partner_escodoo(env):
     """
     Loads the Escodoo partner into the database if not already present.
 
     Args:
-        cr: Database cursor for executing SQL queries.
         env: The Odoo environment for database access.
     """
     escodoo_partner = env["res.partner"].search(
@@ -56,7 +57,7 @@ def _load_partner_escodoo(cr, env):
     )
     if not escodoo_partner:
         tools.convert_file(
-            cr,
+            env,
             "escodoo_setup_base_br",
             "data/res_partner.xml",
             None,
@@ -84,25 +85,20 @@ def _load_default_chart_of_accounts(env):
         env: The Odoo environment for database access.
     """
     # Identifies companies without a chart of accounts
-    companies_without_chart = env["res.company"].search(
-        [("chart_template_id", "=", False)]
-    )
-
-    # Loads a default chart of accounts (adjust as necessary)
-    chart_template = env.ref(
-        "l10n_br_coa_generic.l10n_br_coa_generic_template", raise_if_not_found=False
-    )
-    if not chart_template:
-        # If the default chart of accounts is not found, return or raise an error as
-        # necessary
+    company_ids = env["res.company"].search([("chart_template", "=", False)]).ids
+    if not company_ids:
         return
 
-    # Associates the chart of accounts with companies that do not have one
-    for company in companies_without_chart:
-        # Sets up the environment with the specific company to correctly load the
-        # chart of accounts
-        # env_cr = api.Environment(env.cr, company.id, env.context)
-        chart_template.with_env(env).try_loading(company=company)
+    # try_loading warns when called before the registry is fully loaded (which is
+    # the case here, since post_init_hook runs while the module graph is still
+    # loading). Defer it the same way account/models/ir_module.py does: through
+    # registry._auto_install_template, consumed by ir.module.module._register_hook
+    # once every model's _register_hook has run and registry.loaded is True.
+    def _try_loading(env):
+        for company in env["res.company"].browse(company_ids):
+            env["account.chart.template"].try_loading("br_oca_generic", company=company)
+
+    env.registry._auto_install_template = _try_loading
 
 
 def _update_companies(env):
@@ -119,9 +115,12 @@ def _update_companies(env):
         "escodoo_setup_base_br.partner_escodoo", raise_if_not_found=False
     )
 
-    company_logo_path = get_module_resource(
-        "escodoo_setup_base_br", "static/img", "your_company_logo.png"
-    )
+    try:
+        company_logo_path = tools.file_path(
+            "escodoo_setup_base_br/static/img/your_company_logo.png"
+        )
+    except FileNotFoundError:
+        company_logo_path = False
     company_logo_image = (
         base64.b64encode(open(company_logo_path, "rb").read())
         if company_logo_path
@@ -223,16 +222,14 @@ def _update_partners(env):
         _logger.info("Skipping partner update because demo data is not installed.")
 
 
-def post_init_hook(cr, registry):
+def post_init_hook(env):
     """
     Post-initialization hook for configuring module setup.
 
     Args:
-        cr: Database cursor for executing SQL queries.
-        registry: Odoo database registry.
+        env: Odoo environment.
     """
-    env = api.Environment(cr, SUPERUSER_ID, {})
-    _load_partner_escodoo(cr, env)
+    _load_partner_escodoo(env)
     _update_companies(env)
     # _update_res_config_settings(env)
     _load_default_chart_of_accounts(env)
